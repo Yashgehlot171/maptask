@@ -36,6 +36,13 @@ local.properties
 .kotlin/
 google-services.json
 
+# Build output / logs (should never be committed — they're large and regenerated per build)
+android/app/release/
+android/app/debug/
+*.apk
+*.aab
+error_log.txt
+
 # node.js
 #
 node_modules/

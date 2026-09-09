@@ -3,6 +3,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
 
     <application
       android:name=".MainApplication"
@@ -16,7 +19,14 @@
           <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBTfPxIPqz1Cjmn_VEALuilaVfVLH3y060" />
-    
+
+      <!-- react-native-background-actions declares this service without a
+           foregroundServiceType; Android 14+ (targetSdk 34+) requires one for
+           a location-tracking foreground service, so it's overridden here. -->
+      <service
+        android:name="com.asterinet.react.bgactions.RNBackgroundActionsTask"
+        android:foregroundServiceType="location" />
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
